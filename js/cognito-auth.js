@@ -71,15 +71,26 @@ var WildRydes = window.WildRydes || {};
             Name : 'name',
             Value : name
         };
+        var datawalletmoney = {
+            Name : 'custom:WalletMoney',
+            Value : '100'
+        }
+        var datawinninghistory = {
+            Name :'custom:WinningHistory',
+            Value :'CSKvsRCB'
+        }
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
         var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
         var attributeBirthDate = new AmazonCognitoIdentity.CognitoUserAttribute(dataBirthDate);
         var attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(dataName);
-
+        var attributeWalletMoney = new AmazonCognitoIdentity.CognitoUserAttribute(datawalletmoney);
+        var attributeWinningHistory = new AmazonCognitoIdentity.CognitoUserAttribute(datawinninghistory);
         attributeList.push(attributeEmail);
         attributeList.push(attributePhoneNumber);
         attributeList.push(attributeBirthDate);
         attributeList.push(attributeName);
+        attributeList.push(attributeWalletMoney);
+        attributeList.push(attributeWinningHistory);
 
 
         userPool.signUp(toUsername(email), password, attributeList, null,
@@ -144,7 +155,7 @@ var WildRydes = window.WildRydes || {};
         signin(email, password,
             function signinSuccess() {
                 console.log('Successfully Logged In');
-                window.location.href = 'Homepage.html';
+                window.location.href = 'userprofile.html';
             },
             function signinError(err) {
                 alert(err);

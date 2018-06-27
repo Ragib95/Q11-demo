@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+
+        
+   <div id="Info">
+        <p style="margin-left:25em;margin-top: 5em">
+
+
+            <strong>Name:</strong>
+            <span id = "username"></span> 
+        </p>
+        <p style="margin-left:25em;margin-top: 3em">
+            <strong>Email:</strong>
+            
+            <span id = "email"></span>
+         
+        <p style="margin-left:25em;margin-top: 3em">
+            <strong>Mobile Number :</strong>
+            <span id = "mobilenumber"></span>
+        </p>
+        <p style="margin-left:25em;margin-top: 3em">
+            <strong>Date Of Birth :</strong>
+            <span id = "birthdate"></span>
+        </p>
+        <p style="margin-left:25em;margin-top: 3em">
+            <strong>Wallet Money:</strong>
+            <span id = "walletmoney"></span>
+        </p>
+        <p style="margin-left:25em;margin-top: 3em">
+            <strong>Winning History:</strong>
+            <span id = "winninghistory"></span>
+        </p>
+    </div>
+
+    <!-- Needed because other elements inside ProfilePage have floats -->
+    <div style="clear:both"></div>
+</div>
+
+</body>
+<script src="js/vendor/jquery-3.1.0.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/aws-cognito-sdk.min.js"></script>
+<script src="js/vendor/amazon-cognito-identity.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/cognito-auth.js"></script>
+<script src="js/userprofile.js"></script>
+
+</html>
+
