@@ -34,7 +34,7 @@ var WildRydes = window.WildRydes || {};
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
                 console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
                 console.error('Response: ', jqXHR.responseText);
-                alert('An erro==r occured when requesting your unicorn:\n' + jqXHR.responseText);
+                alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
             }
         });
     }
@@ -51,7 +51,7 @@ var WildRydes = window.WildRydes || {};
                     console.log("id is " + contestID);
                     console.log("sdfsdf"+contest[i]['Teams']);
                
-                    $("ol").append(`<h3 style = "margin-left:4em"> ${contest[i]['ContestID']["S"]}</h3>
+                    $("ol").append(`<h3 style = "margin-left:3em"> ${contest[i]['ContestID']["S"]}</h3>
                                     <p> 
                                         <span class="entryfees" style="margin-left: 5em"> Entry Fee</span>
                                         <span><span class="amountsymbol">₹</span>
@@ -63,7 +63,8 @@ var WildRydes = window.WildRydes || {};
                                         <span>Cuurent Teams </span>
                                         <span id ="maxuser" style="margin-left: 13em" id ="maxUser">${contest[i]['MaxUser']["N"]}</span>
                                         <span>Max. Teams</span> 
-                                    </p>`)
+                                    </p> 
+                                    <br><hr>`)
 
 
                 }
@@ -125,11 +126,17 @@ function JoinContest()
             var name = result[4].getValue();
             var walletmoney = result[5].getValue();
 
-            $('button:button').click(function() 
+            $('button:button').unbind('click').click(function() 
             {
                 contestId =  $(this).val();
+                console.log(contestId)
             });
+
+            //contestId =  $(this).val();
+            console.log(contestId)
+
             var userteamname = "CSKvsRCB" + "-" + email;
+            console.log(contestId)
 
             var jsonObject = new Object();
             jsonObject["MatchID"] = "CSKvsRCB";
@@ -138,29 +145,48 @@ function JoinContest()
             jsonObject["UserTeamName"] = userteamname;
             jsonObject["walletbalance"] = parseInt(walletmoney,10);
             console.log("Object is " + jsonObject["ContestID"]);
-            requestData();
-
-            function requestData() 
-            {
-                $.ajax({
-                    method: 'PUT',
-                    url: _config.api.invokeUrl + '/contest-registration' ,
-                    headers: {
-                        Authorization: 'authToken'
-                    },
-                    data: JSON.stringify(jsonObject),
-                    contentType: 'application/json',
-                    success: completeRequest,
-                    error: function ajaxError(jqXHR, textStatus, errorThrown) {
-                        console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
-                        console.error('Response: ', jqXHR.responseText);
-                        alert('An erro==r occured when requesting your unicorn:\n' + jqXHR.responseText);
-                    }
-                });
-            }
+            
+            $.ajax({
+                method: 'PUT',
+                url: _config.api.invokeUrl + '/contest-registration' ,
+                //headers: {
+                //    Authorization: authToken
+                //},
+                data: JSON.stringify(jsonObject),
+                contentType: 'application/json',
+                success: completeRequest,
+                error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                    console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+                    console.error('Response: ', jqXHR.responseText);
+                    alert('An error occured when requesting your data:\n' + jqXHR.responseText);
+                }
+            });
+            
             function completeRequest(result) 
             {
-                console.log("Result is " + result);
+                if (result=="Already in contest") {
+                    alert("Result is " + result);
+                } else if (result=="[object Object]") {
+                    alert("Error try again");
+                } else {
+                    alert("Result is success " + result);
+
+                    var attributeList = [];
+                    var datawalletmoney = {
+                        Name : 'custom:WalletMoney',
+                        Value : '80'
+                    }
+                    var datawalletmoney = new AmazonCognitoIdentity.CognitoUserAttribute(datawalletmoney);
+                    attributeList.push(datawalletmoney);
+
+                    cognitoUser.updateAttributes(attributeList, function(err, result) {
+                        if (err) {
+                            alert(err);
+                            return;
+                        }
+                        console.log('call result: ' + result);
+                    });
+                };
             }
 
 

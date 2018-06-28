@@ -2,7 +2,22 @@ var WildRydes = window.WildRydes || {};
 
 (function user_profile($) 
 {
-	var poolData = {
+	var authToken;
+    console.log('dsaf...........',WildRydes);
+    WildRydes.authToken.then(function setAuthToken(token) {
+        if (token) {
+            authToken = token;
+            console.log('Tokensssssss', authToken)
+        } else {
+            window.location.href = 'signin.html';
+        }
+    }).catch(function handleTokenError(error) {
+        alert(error);
+        window.location.href = 'signin.html';
+    });
+    
+
+    var poolData = {
         UserPoolId: _config.cognito.userPoolId,
         ClientId: _config.cognito.userPoolClientId
     };
@@ -58,12 +73,15 @@ var WildRydes = window.WildRydes || {};
             $("#winninghistory").html(winningHistroy);
 
 
-
-
-
             //}
         });
     });
+
+    $('#signOut').click(function() {
+            WildRydes.signOut();
+            alert("You have been signed out.");
+            window.location = "signin.html";
+        }); 
 
 
 	// body...
