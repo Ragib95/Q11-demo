@@ -1,4 +1,3 @@
-
 var WildRydes = window.WildRydes || {};
 
 (function user_profile($) 
