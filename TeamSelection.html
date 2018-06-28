@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing:border-box;
+}
+
+.left {
+  background-color:#2196F3;
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+.main {
+  background-color:#f1f1f1;
+  padding:20px;
+  float:left;
+  width:60%; /* The width is 60%, by default */
+}
+
+.right {
+  background-color:amber;
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+  .left, .main, .right {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+</style>
+</head>
 
 <body>
-<form>
-	<div onclick="listUpdate()" id="list_item"></div>
-</form>
-<br>
+	<div id="current_team" ></div>
+	<div class="left">
+	<h3>Your very own customised team</h3>
+	<h5>Choose the ones who will make you rich!!</h5>
+	<h3>Instruction for Team Selection</h3>
+	<ul>
+		<li>Total number of players must be 11</li>
+		<ii>A maximum of 7 players can be selected from one team</li>
+		<li>A maximum of 7 Batsmen can be selected</li>
+		<li>A maximum of 4 Bowlers can be selected</li>
+		<li>A maximum of 3 All Rounders can be selected</li>
+		<li>A maximum of 1 Wicket Keeper can be selected</li>
+		<li>Total credit should be less than 100</li>
+	</ul>
+</div>
+
+	<table class="main" onclick="listUpdate()" id="list_item" width="50%">
+		<tr>
+			<th>&nbsp &nbsp	&nbsp &nbsp Name</th>
+			<th>Team</th>
+			<th>Role</th>
+			<th>Credits</th>
+		</tr>
+	</table>
+	<div id="break"></div>
+
+<br><div class="right">
 <div id="test" ></div>
 <div id="player_count_error" ></div>
 <div id="player_credit_error" ></div>
@@ -21,7 +80,7 @@
 
 <div id="test_api" ></div>
 <div id="test_json" ></div>
-
+</div>
 
 
 <script src="js/vendor/jquery-3.1.0.js"></script>
