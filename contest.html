@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Contest Ranking</title>
-  <meta charset="utf-8">
+    <title>User Profile</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,17 +13,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="home.css">
     <style>
-      body {font-family: "Times New Roman", Georgia, Serif;}
-      h1,h2,h3,h4,h5,h6 {
-          font-family: "Playfair Display";
-          letter-spacing: 5px;
-      }
+        body {font-family: "Times New Roman", Georgia, Serif;}
+        h1,h2,h3,h4,h5,h6 {
+            font-family: "Playfair Display";
+            letter-spacing: 5px;
+        }
     </style>
 </head>
+<!-- <style type="text/css">
+	body{
+		    background-color: #93B874;
 
+	}
+</style> -->
 <body>
 
-    <!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
         <a href="#" class="w3-bar-item w3-button">Quantiphi 11</a>
@@ -39,40 +42,36 @@
         </div>
       </div>
     </div>
-        
-<div id="Info" style="margin-left:1em;margin-top: 7em">
-        <p style="margin-left:25em;margin-top: 5em">
 
+<div class="container" style="margin-top: 5em">
+<p style="margin-left:5em;margin-top: 3em; font-size: 2em" id = "countdown"></p>
 
-            <strong>Name:</strong>
-            <span id = "username"></span> 
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Email:</strong>
-            
-            <span id = "email"></span>
-         
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Mobile Number :</strong>
-            <span id = "mobilenumber"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Date Of Birth :</strong>
-            <span id = "birthdate"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Wallet Money:</strong>
-            <span id = "walletmoney"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Winning History:</strong>
-            <span id = "winninghistory"></span>
-        </p>
-    </div>
+<p class="contest"  shape="rect" >
+	
+	<ol>
+		<!-- <p>	 
+			<p>	
+				<span class="entryfees" style="margin-left: 5em"> Entry Fee</span>
+				<span><span class="amountsymbol">₹</span>
+				<span class="currency-amount" id ="Entryfees"></span></span>
+				<button class="button" id = "joinbutton" style="margin-left: 17em"></button>
+			</p>
+			<p>
+				<span id ="currentuser" style="margin-left: 5em" id ="teamleft"></span>
+				<span>Teams Left</span>
+				<span id ="maxuser" style="margin-left: 15em" id ="maxUser"></span>
+				<span>Max. Teams</span> 
+			</p>
+			
 
-    <!-- Needed because other elements inside ProfilePage have floats -->
-    <div style="clear:both"></div>
+		</p> -->
+	</ol>
+</p>
+<p id = "result"></p>
+
 </div>
+  
+
 
 </body>
 <script src="js/vendor/jquery-3.1.0.js"></script>
@@ -82,6 +81,6 @@
 <script src="js/config.js"></script>
 <script src="js/cognito-auth.js"></script>
 <script src="js/userprofile.js"></script>
-
+<script type="text/javascript" src = "js/countdown.js"></script>
+<script type="text/javascript" src = "js/contestlist.js"></script>
 </html>
-

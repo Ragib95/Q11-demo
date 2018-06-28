@@ -9,6 +9,7 @@ var WildRydes = window.WildRydes || {};
         UserPoolId: _config.cognito.userPoolId,
         ClientId: _config.cognito.userPoolClientId
     };
+    console.log(poolData)
 
     var userPool;
 
@@ -52,7 +53,7 @@ var WildRydes = window.WildRydes || {};
      * Cognito User Pool functions
      */
 
-    function register(email, password, phone_number, birthdate, name, onSuccess, onFailure) {
+    function register(email, password, phone_number, birthdate, name, username, onSuccess, onFailure) {
         var attributeList = [];
     
         var dataEmail = {
@@ -77,7 +78,7 @@ var WildRydes = window.WildRydes || {};
         }
         var datawinninghistory = {
             Name :'custom:WinningHistory',
-            Value :'CSKvsRCB'
+            Value : '[]'
         }
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
         var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
@@ -93,7 +94,7 @@ var WildRydes = window.WildRydes || {};
         attributeList.push(attributeWinningHistory);
 
 
-        userPool.signUp(toUsername(email), password, attributeList, null,
+        userPool.signUp(username, password, attributeList, null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
@@ -172,11 +173,14 @@ var WildRydes = window.WildRydes || {};
         var birthdate = $('#birthdateInputRegister').val();
         var name = $('#nameInputRegister').val();
 
+        var username = $('#UsernameInputRegister').val();
+
         var onSuccess = function registerSuccess(result) {
             var cognitoUser = result.user;
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
+                alert(confirmation);
                 window.location.href = 'verify.html';
             }
         };
@@ -186,7 +190,7 @@ var WildRydes = window.WildRydes || {};
         event.preventDefault();
 
         if (password === password2) {
-            register(email, password, phone_number, birthdate, name, onSuccess, onFailure);
+            register(email, password, phone_number, birthdate, name, username, onSuccess, onFailure);
         } else {
             alert('Passwords do not match');
         }
