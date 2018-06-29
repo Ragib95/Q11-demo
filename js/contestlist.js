@@ -47,13 +47,14 @@ var WildRydes = window.WildRydes || {};
 
                 for (var i = 0; i < contest.length; i++) 
                 {
-                    var contestID = contest[i]['ContestID']["S"];
-                    console.log("id is " + contestID);
+                    var contestID1 = contest[i]['ContestID']["S"];
+                    // console.log("id is " + contestID);
                     console.log("sdfsdf"+contest[i]['Teams']);
 
                     var amount = contest[i]['EntryFee']["N"];
-                    var new1 = contestID + "-" + amount;
-                    console.log("value is " + new1);
+                    var new1 = contestID1 + "-" + amount;
+                    // var array = [ contestID1,amount];
+                    // console.log("value is " + array);
                     $("ol").append(`<h3 style = "margin-left:4em"> ${contest[i]['ContestID']["S"]}</h3>
 
                
@@ -62,7 +63,7 @@ var WildRydes = window.WildRydes || {};
                                         <span class="entryfees" style="margin-left: 5em"> Entry Fee</span>
                                         <span class="amountsymbol">₹</span>
                                         <span class="currency-amount" id ="Entryfees">${amount}</span></span>
-                                        <button class="button" id = "joinbutton" style="margin-left: 17em" value = ${contest[i]['ContestID']["S"]} onclick = JoinContest()>Join</button>
+                                        <button class="button" id = "joinbutton" style="margin-left: 17em" value = ${new1} onclick = JoinContest()>Join</button>
                                     </p>
                                     <p>
                                         <span id ="currentuser" style="margin-left: 5em" id ="teamleft">${contest[i]['CurrentUser']["N"]}</span>
@@ -83,7 +84,7 @@ var WildRydes = window.WildRydes || {};
 } (jQuery));
 
 var contestId 
-
+var contestAmount
 
 function JoinContest() 
 {
@@ -128,7 +129,7 @@ function JoinContest()
                 alert(err.message || JSON.stringify(err));
                 return;
             }
-            var email = result[8].getValue();
+            // var email = result[8].getValue();
             var name = result[4].getValue();
             var walletmoney = result[5].getValue();
 
@@ -136,14 +137,17 @@ function JoinContest()
             {
                 // var v = $(this).val();
                 // console.log("Value is " +v);
-                contestId =  $(this).val();
-                console.log(contestId)
+                var v  =  $(this).val();
+                // var m = v[0]
+                var v1 = v.split("-",2)
+                contestId = v1[0];
+                contestAmount = v1[1];
             });
 
             //contestId =  $(this).val();
             console.log(contestId)
-
-            var userteamname = "CSKvsRCB" + "-" + email;
+            console.log("Contest amount "+contestAmount);
+            var userteamname = "CSKvsRCB" + "-" + name;
             console.log(contestId)
 
             var jsonObject = new Object();
@@ -154,6 +158,8 @@ function JoinContest()
             jsonObject["walletbalance"] = parseInt(walletmoney,10);
             console.log("Object is " + jsonObject["ContestID"]);
             
+            var finalAmount = parseInt(walletmoney,10) - parseInt(contestAmount,10);
+            console.log("Final amount in wallet is " + finalAmount);
             $.ajax({
                 method: 'PUT',
                 url: _config.api.invokeUrl + '/contest-registration' ,
@@ -182,7 +188,8 @@ function JoinContest()
                     var attributeList = [];
                     var datawalletmoney = {
                         Name : 'custom:WalletMoney',
-                        Value : '80'
+                        Value : finalAmount.toString()
+
                     }
                     var datawalletmoney = new AmazonCognitoIdentity.CognitoUserAttribute(datawalletmoney);
                     attributeList.push(datawalletmoney);
@@ -194,9 +201,8 @@ function JoinContest()
                         }
                         console.log('call result: ' + result);
                     });
-                };
+                }
             }
-
 
             
             
