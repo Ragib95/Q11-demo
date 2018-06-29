@@ -36,7 +36,8 @@ function listUpdate(){
     for (i=0;i<22;i++){
         a[i]=document.getElementById(items[i].PlayerID.S).checked;
         if(a[i]){
-            document.getElementById(items[i].PlayerID.S+"_row").style.color="green";
+            document.getElementById(items[i].PlayerID.S+"_row").style.backgroundColor="green";
+            document.getElementById(items[i].PlayerID.S+"_row").style.color="white";
             total_player_count++;
             total_team_point+=parseInt(items[i].Credit.S);
             if(items[i].TeamID.S=='RCB'){
@@ -55,8 +56,12 @@ function listUpdate(){
                 role_wicketkeeper_count++;
 
         }
-        else
+        else{
             document.getElementById(items[i].PlayerID.S+"_row").style.color="black";
+            document.getElementById(items[i].PlayerID.S+"_row").style.backgroundColor="lightgrey";
+
+        }
+
 
     }
     document.getElementById("test").innerHTML="Total Credits used: "+total_team_point;
