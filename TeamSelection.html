@@ -24,7 +24,7 @@
 
 <body>
 
-    <!-- Navbar (sit on top) -->
+<!-- Navbar (sit on top) -->
     <div class="w3-top">
       <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
         <a href="#" class="w3-bar-item w3-button">Quantiphi 11</a>
@@ -39,49 +39,40 @@
         </div>
       </div>
     </div>
-        
-<div id="Info" style="margin-left:1em;margin-top: 7em">
-        <p style="margin-left:25em;margin-top: 5em">
+
+<div style="margin-left:15em;margin-top: 7em">
+  <form>
+  <div onclick="listUpdate()" id="list_item"></div>
+</form>
+<br>
+<div id="test" ></div>
+<div id="player_count_error" ></div>
+<div id="player_credit_error" ></div>
+<div id="team1_count_error" ></div>
+<div id="team2_count_error" ></div>
+<div id="batsman_count_error" ></div>
+<div id="bowler_count_error" ></div>
+<div id="allrounder_count_error" ></div>
+<div id="wicketkeeper_count_error" ></div>
+<div id="submit_team" ></div>
 
 
-            <strong>Name:</strong>
-            <span id = "username"></span> 
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Email:</strong>
-            
-            <span id = "email"></span>
-         
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Mobile Number :</strong>
-            <span id = "mobilenumber"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Date Of Birth :</strong>
-            <span id = "birthdate"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Wallet Money:</strong>
-            <span id = "walletmoney"></span>
-        </p>
-        <p style="margin-left:25em;margin-top: 3em">
-            <strong>Winning History:</strong>
-            <span id = "winninghistory"></span>
-        </p>
-    </div>
 
-    <!-- Needed because other elements inside ProfilePage have floats -->
-    <div style="clear:both"></div>
+<div id="test_api" ></div>
+<div id="test_json" ></div>
 </div>
 
-</body>
+
+
+
 <script src="js/vendor/jquery-3.1.0.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/aws-cognito-sdk.min.js"></script>
 <script src="js/vendor/amazon-cognito-identity.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/cognito-auth.js"></script>
+<script src="js/teamselection.js"></script>
 <script src="js/userprofile.js"></script>
 
+</body>
 </html>
-
