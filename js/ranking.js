@@ -17,6 +17,8 @@ var WildRydes = window.WildRydes || {};
     });
     console.log('adsdfdsaf....',WildRydes);
 
+
+
     function requestData() {
         console.log('requestdata111......');
         WildRydes.authToken.then(function setAuthToken(token) {
