@@ -1,6 +1,6 @@
 
 var WildRydes = window.WildRydes || {};
-
+var test="adas"
 (function contestlist($) 
 {
 	/*var xhr = new XMLHttpRequest();
@@ -68,8 +68,9 @@ var WildRydes = window.WildRydes || {};
                                     <br><hr>`)
                     
                     }
+
                 }
-    }
+    
 
    
  
