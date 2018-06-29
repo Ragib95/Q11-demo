@@ -78,7 +78,12 @@ var WildRydes = window.WildRydes || {};
         }
         var datawinninghistory = {
             Name :'custom:WinningHistory',
-            Value : '[]'
+            Value : JSON.stringify({
+                MatchID: '',
+                ContestID: '',
+                Price: '',
+                Rank: ''
+            })
         }
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
         var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
