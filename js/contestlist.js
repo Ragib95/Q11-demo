@@ -50,13 +50,15 @@ var WildRydes = window.WildRydes || {};
                     var contestID = contest[i]['ContestID']["S"];
                     console.log("id is " + contestID);
                     console.log("sdfsdf"+contest[i]['Teams']);
-               
+                    var amount = contest[i]['EntryFee']["N"];
+                    var new1 = contestID + "-" + amount;
+                    console.log("value is " + new1);
                     $("ol").append(`<h3 style = "margin-left:4em"> ${contest[i]['ContestID']["S"]}</h3>
                                     <p> 
                                         <span class="entryfees" style="margin-left: 5em"> Entry Fee</span>
-                                        <span><span class="amountsymbol">₹</span>
-                                        <span class="currency-amount" id ="Entryfees">${contest[i]['EntryFee']["N"]}</span></span>
-                                        <button class="button" id = ${contest[i]['ContestID']["S"]} style="margin-left: 17em" value = ${contest[i]['ContestID']["S"]} onclick = JoinContest()>Join</button>
+                                        <span class="amountsymbol">₹</span>
+                                        <span class="currency-amount" id ="Entryfees">${amount}</span></span>
+                                        <button class="button" id = "joinbutton" style="margin-left: 17em" value = ${contest[i]['ContestID']["S"]} onclick = JoinContest()>Join</button>
                                     </p>
                                     <p>
                                         <span id ="currentuser" style="margin-left: 5em" id ="teamleft">${contest[i]['CurrentUser']["N"]}</span>
@@ -127,6 +129,8 @@ function JoinContest()
 
             $('button:button').click(function() 
             {
+                // var v = $(this).val();
+                // console.log("Value is " +v);
                 contestId =  $(this).val();
             });
             var userteamname = "CSKvsRCB" + "-" + email;
