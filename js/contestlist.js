@@ -148,7 +148,7 @@ function JoinContest()
             //contestId =  $(this).val();
             console.log(contestId)
             console.log("Contest amount "+contestAmount);
-            var userteamname = "CSKvsRCB" + "-" + name;
+            var userteamname = "CSKvsRCB" + "-" + cognitoUser.username;
             console.log(contestId)
 
             var jsonObject = new Object();
@@ -158,7 +158,7 @@ function JoinContest()
             jsonObject["UserTeamName"] = userteamname;
             jsonObject["walletbalance"] = parseInt(walletmoney,10);
             console.log("Object is " + jsonObject["ContestID"]);
-            
+            console.log("team name is " +userteamname);
             var finalAmount = parseInt(walletmoney,10) - parseInt(contestAmount,10);
             console.log("Final amount in wallet is " + finalAmount);
             $.ajax({
