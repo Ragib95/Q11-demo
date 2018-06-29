@@ -1,7 +1,61 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <a href="#" class="w3-bar-item w3-button">Quantiphi 11</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+          
+          <a href="ranking.html" class="w3-bar-item w3-button">Ranking</a>
+          <a href="TeamSelection.html" class="w3-bar-item w3-button">Team Selection</a>
+          <a href="contest.html" class="w3-bar-item w3-button">Contests</a>
+          <a href="userprofile.html" class="w3-bar-item w3-button">My Profile</a>
+          <a href="#" class="w3-bar-item w3-button" id="signOut">Sign Out</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing:border-box;
+}
+
+.left {
+  background-color:#2196F3;
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+.main {
+  background-color:#f1f1f1;
+  padding:300px;
+  float:left;
+  width:60%; /* The width is 60%, by default */
+  height:100%;
+}
+
+.right {
+  background-color:"amber";
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+  .left, .main, .right {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+</style>
+
   <title>Contest Ranking</title>
   <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -23,24 +77,42 @@
 </head>
 
 <body>
+	<div id="current_team" ></div>
+	<div class="left">
+	<h3>Your very own customised team</h3>
+	<h5>Choose the ones who will make you rich!!</h5>
+	<h3>Instruction for Team Selection</h3>
+	<ul>
+		<li>Total number of players must be 11</li>
+		<ii>A maximum of 7 players can be selected from one team</li>
+		<li>A maximum of 7 Batsmen can be selected</li>
+		<li>A maximum of 4 Bowlers can be selected</li>
+		<li>A maximum of 3 All Rounders can be selected</li>
+		<li>A maximum of 1 Wicket Keeper can be selected</li>
+		<li>Total credit should be less than 100</li>
+	</ul>
+</div>
 
-<!-- Navbar (sit on top) -->
-    <div class="w3-top">
-      <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-        <a href="#" class="w3-bar-item w3-button">Quantiphi 11</a>
-        <!-- Right-sided navbar links. Hide them on small screens -->
-        <div class="w3-right w3-hide-small">
-          
-          <a href="ranking.html" class="w3-bar-item w3-button">Ranking</a>
-          <a href="TeamSelection.html" class="w3-bar-item w3-button">Team Selection</a>
-          <a href="contest.html" class="w3-bar-item w3-button">Contests</a>
-          <a href="userprofile.html" class="w3-bar-item w3-button">My Profile</a>
-          <a href="#" class="w3-bar-item w3-button" id="signOut">Sign Out</a>
-        </div>
-      </div>
-    </div>
+	<table class="main" onclick="listUpdate()" id="list_item" width="50%">
+		<tr style="margin-left: 2em">
+      <td></td>
+			<th>Name</th>
+      <td></td>
+			<th>Team</th>
+            <td></td>
 
-<div style="margin-left:15em;margin-top: 7em">
+			<th>Role</th>
+            <td></td>
+
+			<th>Credits</th>
+		</tr>
+	</table>
+	<div id="break"></div>
+
+<br><div class="right">
+
+
+
   <form>
   <div onclick="listUpdate()" id="list_item"></div>
 </form>
@@ -61,9 +133,6 @@
 <div id="test_api" ></div>
 <div id="test_json" ></div>
 </div>
-
-
-
 
 <script src="js/vendor/jquery-3.1.0.js"></script>
 <script src="js/vendor/bootstrap.min.js"></script>

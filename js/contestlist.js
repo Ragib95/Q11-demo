@@ -49,6 +49,8 @@ var WildRydes = window.WildRydes || {};
                 {
                     var contestID1 = contest[i]['ContestID']["S"];
                     // console.log("id is " + contestID);
+
+                    
                     console.log("sdfsdf"+contest[i]['Teams']);
 
                     var amount = contest[i]['EntryFee']["N"];
@@ -72,13 +74,12 @@ var WildRydes = window.WildRydes || {};
                                         <span>Max. Teams</span> 
                                     </p> 
                                     <br><hr>`)
-
-
+                    
+                    }
                 }
-    }
 
-   
- 
+
+    
 
 
 } (jQuery));

@@ -36,6 +36,8 @@ function listUpdate(){
     for (i=0;i<22;i++){
         a[i]=document.getElementById(items[i].PlayerID.S).checked;
         if(a[i]){
+            document.getElementById(items[i].PlayerID.S+"_row").style.backgroundColor="green";
+            document.getElementById(items[i].PlayerID.S+"_row").style.color="white";
             total_player_count++;
             total_team_point+=parseInt(items[i].Credit.S);
             if(items[i].TeamID.S=='RCB'){
@@ -54,12 +56,21 @@ function listUpdate(){
                 role_wicketkeeper_count++;
 
         }
+        else{
+            document.getElementById(items[i].PlayerID.S+"_row").style.color="black";
+            document.getElementById(items[i].PlayerID.S+"_row").style.backgroundColor="lightgrey";
+
+        }
+
+
     }
     document.getElementById("test").innerHTML="Total Credits used: "+total_team_point;
     if(total_player_count!=11){
         falg=0;
         document.getElementById("player_count_error").innerHTML="Total Playes Must be = 11, Current count is "+total_player_count;
     }
+    else
+        document.getElementById("player_count_error").innerHTML="Total Playes Must be = 11, Current count is "+total_player_count;
     if(total_team_point>100){
         falg=0;
         document.getElementById("player_credit_error").innerHTML="Maximum credit allowed is 100";
@@ -185,9 +196,9 @@ var WildRydes = window.WildRydes || {};
 	   //Object.push.call(items, result.Items);
 	   //items=items.concat(result.Items);
 	   console.log(items);
+       
 	   for(i=0;i<11;i++){
 	  		items.push(result.Items[i]);
-			var list=document.createElement("LI");
 			var checkbox=document.createElement("INPUT");
 			
 			if(count==1){
@@ -204,14 +215,34 @@ var WildRydes = window.WildRydes || {};
 			}
             checkbox.setAttribute("type","checkbox");
             checkbox.setAttribute("id",name);//setting the id of checkbox
+            var tr=document.createElement('TR');
+            tr.setAttribute("id",name+"_row");
+            var td=document.createElement('TD');
+            var text=document.createTextNode(name);
+            tr.appendChild(td);
+            tr.appendChild(checkbox);
+            tr.appendChild(text);
+            text=document.createTextNode(team);
+            td=document.createElement('TD');
+            tr.appendChild(td);
+            tr.appendChild(text);
+            text=document.createTextNode(role);
+            td=document.createElement('TD');
+            tr.appendChild(td);
+            tr.appendChild(text);
+            text=document.createTextNode(credit);
+            td=document.createElement('TD');
+            tr.appendChild(td);
+            tr.appendChild(text);
+            document.getElementById("list_item").appendChild(tr);
 
-			var text = document.createTextNode(name+"  |  "+role+"  |  "+team+" |  "+credit);
-			list.appendChild(checkbox);
-			list.appendChild(text);
-			document.getElementById("list_item").appendChild(list);
 		}
 		if(count==2)
 			listUpdate();
+        var tr=document.createElement('TR');
+        document.getElementById("list_item").appendChild(tr);
+
+        document.getElementById("list_item").appendChild(tr);
    }
 
 
