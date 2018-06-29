@@ -69,10 +69,9 @@ var WildRydes = window.WildRydes || {};
                     
                     }
                 }
-    }
 
-   
- 
+
+    
 
 
 } (jQuery));
