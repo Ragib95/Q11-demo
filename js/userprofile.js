@@ -63,7 +63,7 @@ var WildRydes = window.WildRydes || {};
         	var phone_number = result[7].getValue();
         	var email = result[8].getValue();
         	var walletmoney = result[5].getValue();
-            var winningHistroy = result[3].getValue();
+            var winningHistroy = JSON.parse(result[3].getValue());
             //console.log('attribute ' + birthdate + ' has value ' + email);
             $("#username").html(name);
             $("#email").html(email);
@@ -72,6 +72,8 @@ var WildRydes = window.WildRydes || {};
             $("#walletmoney").html(walletmoney);
             $("#winninghistory").html(winningHistroy);
 
+            //$("#winninghistory").html(JSON.stringify(`<p>data ${winningHistroy.MatchID} ${winningHistroy.ContestID} ${winningHistroy.Price} ${Rank}</p>`));
+            console.log(winningHistroy)
 
             //}
         });
