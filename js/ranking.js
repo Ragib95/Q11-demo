@@ -4,7 +4,7 @@ var poolData = {
         ClientId: _config.cognito.userPoolClientId
     };
 
-
+var registered_contest;
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       //var currentUser = userPool.getCurrentUser();
 var cognitoUser = userPool.getCurrentUser();
@@ -27,7 +27,7 @@ var WildRydes = window.WildRydes || {};
     console.log('adsdfdsaf....',WildRydes);
 
 
-    function requestData1(registered_contest) {
+    function requestData1(contestid) {
 
 
 
@@ -41,7 +41,6 @@ var WildRydes = window.WildRydes || {};
                 throw 'no token';
             }
 
-
             $.ajax({
             method: 'PUT',
             url: _config.api.invokeUrl + '/teamranking',
@@ -53,7 +52,7 @@ var WildRydes = window.WildRydes || {};
             },
             data: JSON.stringify({
                 MatchID: 'CSKvsRCB',    
-                ContestID: registered_contest
+                ContestID: contestid
             }),
             contentType: 'application/json',
             success: completeRequest,
@@ -71,15 +70,35 @@ var WildRydes = window.WildRydes || {};
        
     }
 
+  
+
     function completeRequest(result) {
         console.log('Response received from API: 2', result);
-        
-        var i;
+             
+       var row=document.createElement("TR");
+       var heading=document.createTextNode(registered_contest);
+       row.appendChild(heading);
+       document.getElementById("contest_table").appendChild(row);
+        var i, text1, text2, text3, td1, td2, td3;
         for (i = 0; i < result.length; i++) { 
                 result[i];
                 console.log(result[i]);
-                //$("h4").append('contestid = ${registered_contest}')
-                $( "ol" ).append( `<li> ${result[i].M.UserName.S} ${result[i].M.UserTeamName.S}  ${result[i].M.score.N}</li>` );
+                tr=document.createElement("TR");
+                text1=document.createTextNode(result[i].M.UserName.S);
+                td1=document.createElement("TD");
+                tr.appendChild(td1);
+                tr.appendChild(text1);    
+                
+                text2=document.createTextNode(result[i].M.UserTeamName.S);
+                td2=document.createElement("TD");
+                tr.appendChild(td2);
+                tr.appendChild(text2);
+
+                text3=document.createTextNode(result[i].M.score.N);
+                td3=document.createElement("TD");
+                tr.appendChild(td3);
+                tr.appendChild(text3);
+                document.getElementById("contest_table").appendChild(tr);
 
             };  
     }
@@ -131,6 +150,7 @@ var WildRydes = window.WildRydes || {};
         for (i = 0; i < result.length; i++) { 
                 var contestid=result[i].ContestID.S;
                 var matchid = result[i].MatchID.S;
+                registered_contest=contestid;
                 requestData1(contestid);
 
             }  
