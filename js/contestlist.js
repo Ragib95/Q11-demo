@@ -180,9 +180,9 @@ function JoinContest()
             {
                 if (result=="Already in contest") {
                     alert("Result is " + result);
-                } else if (result=="[object Object]") {
+                } else if (result=="Table Name not correct") {
                     alert("Error try again");
-                } else {
+                } else if (result=="Successfully Registered without errors") {
                     alert("Result is success " + result);
 
                     var attributeList = [];
@@ -202,6 +202,8 @@ function JoinContest()
                         }
                         console.log('call result: ' + result);
                     });
+                } else {
+                    alert("Result is success " + result);
                 }
             }
 
