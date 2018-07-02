@@ -191,6 +191,7 @@ function JoinContest()
                         Value : finalAmount.toString()
 
                     }
+                    
                     var datawalletmoney = new AmazonCognitoIdentity.CognitoUserAttribute(datawalletmoney);
                     attributeList.push(datawalletmoney);
 

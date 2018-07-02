@@ -63,7 +63,7 @@ var WildRydes = window.WildRydes || {};
         	var phone_number = result[7].getValue();
         	var email = result[8].getValue();
         	var walletmoney = result[5].getValue();
-            var winningHistroy = result[3].getValue();
+            var winningHistroy = JSON.parse(result[3].getValue());
             //console.log('attribute ' + birthdate + ' has value ' + email);
             console.log(winningHistroy.MatchID)
             $("#username").html(name);
@@ -72,6 +72,7 @@ var WildRydes = window.WildRydes || {};
             $("#birthdate").html(birthdate);
             $("#walletmoney").html(walletmoney);
             //$("#winninghistory").html(JSON.stringify(`<p>data ${winningHistroy.MatchID} ${winningHistroy.ContestID} ${winningHistroy.Price} ${Rank}</p>`));
+            console.log(winningHistroy)
 
             $("winninghistory").html(`<table style="width:100%">
                                          <tr>
