@@ -30,7 +30,7 @@ var WildRydes = window.WildRydes || {};
     WildRydes.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
         console.log(cognitoUser);
-        console.log("Username is " + cognitoUser.username);
+        // console.log("Username is " + cognitoUser.username);
         if (cognitoUser) {
             cognitoUser.getSession(function sessionCallback(err, session) {
                 if (err) {
@@ -65,29 +65,14 @@ var WildRydes = window.WildRydes || {};
         	var walletmoney = result[5].getValue();
             var winningHistroy = result[3].getValue();
             //console.log('attribute ' + birthdate + ' has value ' + email);
-            console.log(winningHistroy.MatchID)
             $("#username").html(name);
             $("#email").html(email);
             $("#mobilenumber").html(phone_number);
             $("#birthdate").html(birthdate);
             $("#walletmoney").html(walletmoney);
-            //$("#winninghistory").html(JSON.stringify(`<p>data ${winningHistroy.MatchID} ${winningHistroy.ContestID} ${winningHistroy.Price} ${Rank}</p>`));
+            $("#winninghistory").html(winningHistroy);
 
-            $("winninghistory").html(`<table style="width:100%">
-                                         <tr>
-                                                 <th>MatchID</th>
-                                                 <th>ContestID</th>
-                                                 <th>Price</th>
-                                                 <th>Rank</th>
-                                                 </tr>
-                                                 <tr>
-                                                    <td>${winningHistroy.MatchID}</td>
-                                                    <td>${winningHistroy.ContestID}</td>
-                                                    <td>${winningHistroy.Price}</td>
-                                                    <td>${winningHistroy.Rank}</td>
-                                                </tr>
-                                        </table>
-                                    <br><hr>`)
+
             //}
         });
     });
