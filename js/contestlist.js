@@ -153,7 +153,7 @@ function JoinContest()
             var jsonObject = new Object();
             jsonObject["MatchID"] = "CSKvsRCB";
             jsonObject["ContestID"] = contestId;
-            jsonObject["UserName"] = name;
+            jsonObject["UserName"] = cognitoUser.username;
             jsonObject["UserTeamName"] = userteamname;
             jsonObject["walletbalance"] = parseInt(walletmoney,10);
             console.log("Object is " + jsonObject["ContestID"]);
