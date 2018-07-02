@@ -153,12 +153,16 @@ function JoinContest()
             var jsonObject = new Object();
             jsonObject["MatchID"] = "CSKvsRCB";
             jsonObject["ContestID"] = contestId;
-            jsonObject["UserName"] = name;
+            jsonObject["UserName"] = cognitoUser.username;
             jsonObject["UserTeamName"] = userteamname;
             jsonObject["walletbalance"] = parseInt(walletmoney,10);
             console.log("Object is " + jsonObject["ContestID"]);
             console.log("team name is " +userteamname);
             var finalAmount = parseInt(walletmoney,10) - parseInt(contestAmount,10);
+            if (finalAmount<0) 
+            {
+                finalAmount = 0;
+            }
             console.log("Final amount in wallet is " + finalAmount);
             $.ajax({
                 method: 'PUT',
@@ -203,7 +207,7 @@ function JoinContest()
                         console.log('call result: ' + result);
                     });
                 } else {
-                    alert("Result is success " + result);
+                    alert(result);
                 }
             }
 
