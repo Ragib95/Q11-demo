@@ -132,6 +132,7 @@ function submit(){
     function requestData() {
        $.ajax({
            method: 'PUT',
+           crossDomain: true,
            url: _config.api.invokeUrl + '/user-team-create',
            headers: {
                Authorization: 'authToken'
@@ -170,6 +171,7 @@ var WildRydes = window.WildRydes || {};
    function requestData(id) {
 	   $.ajax({
 		   method: 'GET',
+       crossDomain: true,
 		   url: _config.api.invokeUrl + '/players-list?' + `TeamID=${id}`,
 		   headers: {
 			   Authorization: 'authToken'
