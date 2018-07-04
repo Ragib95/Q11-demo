@@ -1,6 +1,6 @@
 
 var WildRydes = window.WildRydes || {};
-var test="adas"
+var test="";
 (function contestlist($) 
 {
 	/*var xhr = new XMLHttpRequest();
@@ -25,16 +25,14 @@ var test="adas"
         $.ajax({
             method: 'GET',
             url: _config.api.invokeUrl + '/contest-list' + '?' + parameter,
-            headers: {
-                Authorization: 'authToken'
-            },
+
             //data: "",
             contentType: 'application/json',
             success: completeRequest,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
-                console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+                console.error('Error', textStatus, ', Details: ', errorThrown);
                 console.error('Response: ', jqXHR.responseText);
-                alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
+                alert('An error occured when contacting remote server\n' + jqXHR.responseText);
             }
         });
     }
@@ -174,7 +172,7 @@ function JoinContest()
                 contentType: 'application/json',
                 success: completeRequest,
                 error: function ajaxError(jqXHR, textStatus, errorThrown) {
-                    console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+                    console.error('Error:', textStatus, ', Details: ', errorThrown);
                     console.error('Response: ', jqXHR.responseText);
                     alert('An error occured when requesting your data:\n' + jqXHR.responseText);
                 }
@@ -183,11 +181,11 @@ function JoinContest()
             function completeRequest(result) 
             {
                 if (result=="Already in contest") {
-                    alert("Result is " + result);
+                    alert(result);
                 } else if (result=="Table Name not correct") {
-                    alert("Error try again");
+                    alert("Confirm Registeration");
                 } else if (result=="Successfully Registered without errors") {
-                    alert("Result is success " + result);
+                    alert(result);
 
                     var attributeList = [];
                     var datawalletmoney = {
