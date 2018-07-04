@@ -23,9 +23,9 @@ var WildRydes = window.WildRydes || {};
                 $.ajax({
                     method: 'PUT',
                     url: _config.api.invokeUrl + '/user-player-list' ,
-                    headers: {
-                        Authorization: 'authToken'
-                    },
+                    // headers: {
+                    //     Authorization: 'authToken'
+                    // },
                     data: JSON.stringify(jsonObject),
                     sagar: console.log("Body is " + JSON.stringify(jsonObject)),
 					contentType: 'application/json',

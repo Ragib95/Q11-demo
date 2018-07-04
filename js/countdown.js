@@ -26,8 +26,8 @@
 
         $("#countdown").html(time+" to match time");
         if(hours<1){
-         var b = document.querySelector("ol"); 
-        b.setAttribute("disabled", "");           
+        //  var b = document.querySelector("button"); 
+        // b.setAttribute("disabled", "");           
 
             $("#countdown").html(" The Contest registration has closed <br>"+time+"to match time");
         }

@@ -134,9 +134,9 @@ function submit(){
            method: 'PUT',
            crossDomain: true,
            url: _config.api.invokeUrl + '/user-team-create',
-           headers: {
-               Authorization: 'authToken'
-               },
+           // headers: {
+           //     Authorization: 'authToken'
+           //     },
            data: JSON.stringify(submit_data),
            contentType: 'application/json',
            success: completeRequest,
@@ -173,9 +173,9 @@ var WildRydes = window.WildRydes || {};
 		   method: 'GET',
        crossDomain: true,
 		   url: _config.api.invokeUrl + '/players-list?' + `TeamID=${id}`,
-		   headers: {
-			   Authorization: 'authToken'
-		   },
+		   // headers: {
+			  //  Authorization: 'authToken'
+		   // },
 		   contentType: 'application/json',
 		   success: completeRequest,
 		   error: function ajaxError(jqXHR, textStatus, errorThrown) {
