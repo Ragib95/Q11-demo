@@ -70,11 +70,24 @@ var WildRydes = window.WildRydes || {};
             $("#mobilenumber").html(phone_number);
             $("#birthdate").html(birthdate);
             $("#walletmoney").html(walletmoney);
-            $("#winninghistory").html(winningHistroy);
+            $("winninghistory").html(`<table style="width:100%">
+                                         <tr>
+                                                 <th>MatchID</th>
+                                                 <th>ContestID</th>
+                                                 <th>Price</th>
+                                                 <th>Rank</th>
+                                                 </tr>
+                                                 <tr>
+                                                    <td>${winningHistroy.MatchID}</td>
+                                                    <td>${winningHistroy.ContestID}</td>
+                                                    <td>${winningHistroy.Price}</td>
+                                                    <td>${winningHistroy.Rank}</td>
+                                                </tr>
+                                        </table>
+                                    <br><hr>`);
 
             //$("#winninghistory").html(JSON.stringify(`<p>data ${winningHistroy.MatchID} ${winningHistroy.ContestID} ${winningHistroy.Price} ${Rank}</p>`));
-            console.log(winningHistroy)
-
+          
             //}
         });
     });
