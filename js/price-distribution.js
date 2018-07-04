@@ -1,6 +1,6 @@
 
 var WildRydes = window.WildRydes || {};
-var test="adas"
+
 (function contestlist($) 
 {
     var poolData = 
@@ -12,23 +12,29 @@ var test="adas"
 
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-    var userData = {
-        Username : 'username',
-        Pool : userPool
-    };
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    
+    var cognitoUser = userPool.getCurrentUser();
+
+    console.log(cognitoUser)
 
     //var cognitoUser = userPool.getCurrentUser();
 
     var attributeList = [];
-    var datawalletmoney = {
-        Name : 'custom:WalletMoney',
-        Value : finalAmount.toString()
-
-    }
+    var datawinninghistory = {
+            Name :'custom:WinningHistory',
+            Value : JSON.stringify({
+                MatchID: 'ram',
+                ContestID: 'syam',
+                Price: '10',
+                Rank: '1'
+            })
+        }
     
-    var datawalletmoney = new AmazonCognitoIdentity.CognitoUserAttribute(datawalletmoney);
-    attributeList.push(datawalletmoney);
+
+    var datawinninghistory = new AmazonCognitoIdentity.CognitoUserAttribute(datawinninghistory);
+    attributeList.push(datawinninghistory);
+
+    console.log(attributeList)
 
     cognitoUser.updateAttributes(attributeList, function(err, result) {
         if (err) {
